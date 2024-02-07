@@ -14,6 +14,8 @@ export const addressExplorers: ExplorersData = {
     chainIdToLabel: {
       [c.mainnet.id]: "",
     },
+    faviconUrl:
+      "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='80'>👀</text></svg>",
   },
   AnyABI: {
     urlLayout: `https://anyabi.xyz/api/get-abi/${CHAINLABEL_KEY}/${ADDRESS_KEY}`,
@@ -330,6 +332,12 @@ export const addressExplorers: ExplorersData = {
       [c.optimism.id]: "",
     },
   },
+  Otterscan: {
+    urlLayout: `https://sepolia.otterscan.io/address/${ADDRESS_KEY}`,
+    chainIdToLabel: {
+      [c.sepolia.id]: "",
+    },
+  },
   Parsec: {
     urlLayout: `https://parsec.fi/address/${ADDRESS_KEY}`,
     chainIdToLabel: {
@@ -342,7 +350,7 @@ export const addressExplorers: ExplorersData = {
       [c.optimism.id]: "",
       [c.scroll.id]: "",
       [c.zkSync.id]: "",
-    }
+    },
   },
   PolygonScan: {
     urlLayout: `https://polygonscan.com/address/${ADDRESS_KEY}`,
@@ -409,6 +417,47 @@ export const addressExplorers: ExplorersData = {
       [c.polygon.id]: "polygonscan",
     },
     forContracts: true,
+    faviconWhite: true,
+  },
+  VFatScan: {
+    urlLayout: `https://scan.vf.at/address/${CHAINLABEL_KEY}/${ADDRESS_KEY}`,
+    chainIdToLabel: {
+      [c.mainnet.id]: c.mainnet.id.toString(),
+      [c.arbitrum.id]: c.arbitrum.id.toString(),
+      [c.arbitrumNova.id]: c.arbitrumNova.id.toString(),
+      [c.aurora.id]: c.aurora.id.toString(),
+      [c.avalanche.id]: c.avalanche.id.toString(),
+      [c.base.id]: c.base.id.toString(),
+      [c.boba.id]: c.boba.id.toString(),
+      [c.bsc.id]: c.bsc.id.toString(),
+      [c.canto.id]: c.canto.id.toString(),
+      [c.celo.id]: c.celo.id.toString(),
+      [c.cronos.id]: c.cronos.id.toString(),
+      [c.dfk.id]: c.dfk.id.toString(),
+      [c.dogechain.id]: c.dogechain.id.toString(),
+      [c.evmos.id]: c.evmos.id.toString(),
+      [c.fantom.id]: c.fantom.id.toString(),
+      [c.fuse.id]: c.fuse.id.toString(),
+      [c.gnosis.id]: c.gnosis.id.toString(),
+      [c.harmonyOne.id]: c.harmonyOne.id.toString(),
+      [c.iotex.id]: c.iotex.id.toString(),
+      [c.klaytn.id]: c.klaytn.id.toString(),
+      [c.linea.id]: c.linea.id.toString(),
+      [c.mantle.id]: c.mantle.id.toString(),
+      [c.metis.id]: c.metis.id.toString(),
+      [c.moonbeam.id]: c.moonbeam.id.toString(),
+      [c.moonriver.id]: c.moonriver.id.toString(),
+      [c.okc.id]: c.okc.id.toString(),
+      [c.optimism.id]: c.optimism.id.toString(),
+      [c.polygon.id]: c.polygon.id.toString(),
+      [c.polygonZkEvm.id]: c.polygonZkEvm.id.toString(),
+      [c.ronin.id]: c.ronin.id.toString(),
+      [c.scroll.id]: c.scroll.id.toString(),
+      [c.telos.id]: c.telos.id.toString(),
+      [c.wanchain.id]: c.wanchain.id.toString(),
+      [c.zkSync.id]: c.zkSync.id.toString(),
+    },
+    faviconUrl: "https://scan.vf.at/favicon.ico",
   },
   Zapper: {
     urlLayout: `https://zapper.xyz/account/${ADDRESS_KEY}`,
