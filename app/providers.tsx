@@ -3,15 +3,16 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import theme from "@/style/theme";
 import "@rainbow-me/rainbowkit/styles.css";
+import { AppProgressProvider as ProgressProvider } from "@bprogress/next";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { http, WagmiProvider, createConfig } from "wagmi";
 import {
-  connectorsForWallets,
+  getDefaultConfig,
   RainbowKitProvider,
   darkTheme,
+  connectorsForWallets,
 } from "@rainbow-me/rainbowkit";
-import { porto } from "porto/wagmi";
 
 import {
   metaMaskWallet,
@@ -29,7 +30,7 @@ import {
 import { walletChains } from "@/data/chains";
 export { walletChains };
 
-const appName = "Swiss-Knife.xyz";
+const appName = "ETH.sh";
 const projectId = process.env.NEXT_PUBLIC_WC_PROJECT_ID!;
 
 // Create a global variable to store the modal opener function
@@ -68,7 +69,7 @@ const connectors = connectorsForWallets(
 );
 
 export const config = createConfig({
-  connectors: [frameConnector(), ...connectors, porto()],
+  connectors: [frameConnector(), ...connectors],
   chains: walletChains,
   transports: walletChains.reduce<Record<number, ReturnType<typeof http>>>(
     (transport, chain) => {
@@ -89,16 +90,23 @@ export const Providers = ({ children }: { children: React.ReactNode }) => {
   globalOpenImpersonatorModal = openModal;
 
   return (
-    <ChakraProvider theme={theme}>
-      <WagmiProvider config={config}>
-        <QueryClientProvider client={queryClient}>
-          <RainbowKitProvider theme={darkTheme()} modalSize={"compact"}>
-            {children}
-            <ModalComponent />
-            <ImpersonatorFloatingButton />
-          </RainbowKitProvider>
-        </QueryClientProvider>
-      </WagmiProvider>
-    </ChakraProvider>
+    <ProgressProvider
+      height="2px"
+      color="#e84142"
+      options={{ showSpinner: false }}
+      shallowRouting
+    >
+      <ChakraProvider theme={theme}>
+        <WagmiProvider config={config}>
+          <QueryClientProvider client={queryClient}>
+            <RainbowKitProvider theme={darkTheme()} modalSize={"compact"}>
+              {children}
+              <ModalComponent />
+              <ImpersonatorFloatingButton />
+            </RainbowKitProvider>
+          </QueryClientProvider>
+        </WagmiProvider>
+      </ChakraProvider>
+    </ProgressProvider>
   );
 };
